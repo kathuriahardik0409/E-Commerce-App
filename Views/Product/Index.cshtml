@@ -1,0 +1,94 @@
+@model List<Product>
+<partial name = "_Notification" />
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+
+        <div class="col-6 text-end">
+            <a asp-asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Product
+            </a>
+        </div>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Product Title
+                </th>
+                <th>
+                    Product Description
+                </th>
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    List Price
+                </th>
+                <th>
+                    Price for 1-50
+                </th>
+                <th>
+                    Price for 50+
+                </th>
+                <th>
+                    Price for 100+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>
+                        @element.Title
+                    </td>
+                    <td>
+                        @element.Description
+                    </td>
+                    <td>
+                        @element.ISBN
+                    </td>
+                    <td>
+                        @element.Author
+                    </td>
+                    <td>
+                        @element.ListPrice
+                    </td>
+                    <td>
+                        @element.Price
+                    </td>
+                    <td>
+                        @element.Price50
+                    </td>
+                    <td>
+                        @element.Price100
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Product" asp-action="Edit" class="btn btn-primary mx-2" asp-route-id = "@element.Id">
+                                <i class="bi-pencil-square"></i> Edit
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Product" asp-action="Delete" class="btn btn-danger mx-2" asp-route-id = "@element.Id">
+                                <i class="bi-trash-fill"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+            
+                }
+            </tbody>
+        </table>
+
+    </div>
